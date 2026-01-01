@@ -31,7 +31,7 @@ env = dotenv_values(".env")
 SECRET_KEY = env["SECRET_KEY"]
 ALGORITHM = env["ALGORITHM"]
 
-ACCESS_TOKEN_EXPIRE_MINUTES = 0.5
+ACCESS_TOKEN_EXPIRE_MINUTES = 999
 TIMEZONE = pytz.timezone("Asia/Baku")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/token")
@@ -88,6 +88,7 @@ async def verify_token(token: str, db: db_dependency):
             "user": {
                 "id": user.id,
                 "username": user.username,
+                "fullname": user.fullname,
                 "role_id": user.role_id
             },
             "time": seconds_left

@@ -9,6 +9,7 @@ class Login(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(100), unique=True, nullable=False)
     password_hash = Column(String(255), nullable=False)
+    fullname = Column(String(255), nullable=False)
 
     role_id = Column(Integer, ForeignKey("roles.id"), nullable=False)
 

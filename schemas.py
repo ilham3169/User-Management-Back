@@ -11,7 +11,6 @@ from datetime import datetime
 class TelegramMessage(BaseModel):
     message: str
 
-
 class LoginRequest(BaseModel):
     username: str
     password_hash: str
