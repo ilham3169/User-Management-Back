@@ -3,6 +3,15 @@ from pydantic import BaseModel, Field
 from typing import Optional
 from datetime import datetime
 
+
+
+
+
+
+class TelegramMessage(BaseModel):
+    message: str
+
+
 class LoginRequest(BaseModel):
     username: str
     password_hash: str
@@ -19,7 +28,14 @@ class LoginEdit(BaseModel):
     is_active: Optional[bool] = True
 
 
+
+
+
+
+
 class RoleBase(BaseModel):
     name: str
     description: Optional[str] = None
+
+
 

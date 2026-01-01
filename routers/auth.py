@@ -8,10 +8,11 @@ from security import hash_password, verify_password
 from models import Login, Role
 from schemas import LoginRequest, LoginCreate, LoginEdit
 from datetime import datetime, timedelta, timezone
-import pytz
 from jose import JWTError, jwt
-
+from dotenv import dotenv_values
 from database import SessionLocal
+
+import pytz
 
 router = APIRouter(
     prefix="/auth",
@@ -25,8 +26,11 @@ def get_db():
     finally:
         db.close()
 
-SECRET_KEY = "girmeyolmaz666" 
-ALGORITHM = "HS256"
+env = dotenv_values(".env")
+
+SECRET_KEY = env["SECRET_KEY"]
+ALGORITHM = env["ALGORITHM"]
+
 ACCESS_TOKEN_EXPIRE_MINUTES = 0.5
 TIMEZONE = pytz.timezone("Asia/Baku")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
